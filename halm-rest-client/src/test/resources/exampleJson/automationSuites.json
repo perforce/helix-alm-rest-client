@@ -1,0 +1,48 @@
+{
+  "automationSuitesData": [
+    {
+      "active": true,
+      "createdInfo": {
+        "dateTime": "2022-02-24T21:55:27Z",
+        "user": {
+          "firstName": "System",
+          "id": 1,
+          "lastName": "Administrator",
+          "mi": "",
+          "username": "Administrator"
+        }
+      },
+      "description": "Jenkins suite description goes here",
+      "id": 1,
+      "modifiedInfo": {
+        "dateTime": "2022-02-24T21:55:27Z",
+        "user": {
+          "firstName": "System",
+          "id": 1,
+          "lastName": "Administrator",
+          "mi": "",
+          "username": "Administrator"
+        }
+      },
+      "name": "Example Jenkins Suite",
+      "owners": [],
+      "runConfiguration": {
+        "automatedTestConfig": {
+          "id": 1,
+          "link": "https://localhost:8443/helix-alm/api/v0/Traditional_Template/configs/automatedTestConfigs/1",
+          "name": "Jenkins Test Configuration"
+        },
+        "jenkins": {
+          "defaultBuildParameters": [],
+          "projectName": "HelixALM_RESTAPI",
+          "remoteAuthenticationToken": null
+        },
+        "type": "jenkins"
+      },
+      "scriptIDPrefix": "_HALM",
+      "self": "https://localhost:8443/helix-alm/api/v0/Traditional_Template/automationSuites/1",
+      "testCaseIDs": []
+    }
+  ],
+  "self": "https://localhost:8443/helix-alm/api/v0/Traditional_Template/automationSuites"
+}

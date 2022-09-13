@@ -1,0 +1,4 @@
+/halm-rest-client/build/
+/build/
+/.sscmignore
+/.gradle/

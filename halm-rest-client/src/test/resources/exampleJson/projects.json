@@ -1,0 +1,20 @@
+{
+  "projects": [
+    {
+      "id": 7,
+      "name": "@REST API's Test Project DB!",
+      "uuid": "{a07e5d12-c02e-430b-980f-b5ff9fd97c0b}"
+    },
+    {
+      "id": 8,
+      "name": "Traditional_Template",
+      "uuid": "{62981d8a-2c13-4557-b938-9b513669eb9b}"
+    },
+    {
+      "id": 9,
+      "name": "Enhanced Compliance & E-Sigs",
+      "uuid": "{d9bc55d9-e6e7-4b63-894f-b19ce23e667c}"
+    }
+  ],
+  "projectsLoading": 0
+}
