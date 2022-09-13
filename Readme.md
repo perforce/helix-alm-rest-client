@@ -1,3 +1,4 @@
+![Support](https://img.shields.io/badge/Support-Community-yellow.svg)
 # Helix ALM REST Client API
 
 The halm-rest-client-api is the starting point for building a complete standalone Java client that can be used to directly interact with the Helix ALM REST API. [Learn more](https://www.perforce.com/products/helix-alm) about Helix ALM.
@@ -9,9 +10,6 @@ Maintained by [Perforce Software](https://www.perforce.com/).
 ## Requirements
 * [Helix ALM 2022.2 Server](https://www.perforce.com/downloads/helix-alm) or later
 * [Helix ALM REST API 2022.2](https://www.perforce.com/downloads/helix-alm) or later. Installed with the Helix ALM Server.
-
-## Feedback
-This plugin is maintained by [Perforce](https://www.perforce.com/). If you have any problems, questions, or feature requests, contact Perforce via GitHub Issues.
 
 ## License
 [MIT License](LICENSE.md)
@@ -48,3 +46,10 @@ Runs the build in unit tests.
 ### integrationTest
 Runs a series of integration tests with the Helix ALM REST API. This expects a Helix ALM database and projects similar to the
 REST API WITS setup.
+
+## Support
+The halm-rest-client is a community supported project and is not officially supported by Perforce.
+
+Pull requests and issues are the responsibility of the project's moderator(s); this may be a vetted individual or team 
+with members outside of the Perforce organization. Perforce does not officially support these projects, therefore all 
+issues should be reported and managed via GitHub (not via Perforce's standard support process).
