@@ -12,7 +12,7 @@ Maintained by [Perforce Software](https://www.perforce.com/).
 * [Helix ALM REST API 2022.2](https://www.perforce.com/downloads/helix-alm) or later. Installed with the Helix ALM Server.
 
 ## License
-[MIT License](LICENSE.md)
+[MIT License](LICENSE.txt)
 
 # Support
 The halm-rest-client is a community supported project and is not officially supported by Perforce.
