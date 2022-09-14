@@ -41,7 +41,7 @@ Set any required variables in `~/.gradle/gradle.properties`. Variables can also 
 ## Testing
 This project has two test modes:
 * ./gradlew.bat test
-* ./gradle2.bat integrationTest
+* ./gradlew.bat integrationTest
 
 ### test
 Runs the build in unit tests.
