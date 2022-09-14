@@ -47,5 +47,4 @@ This project has two test modes:
 Runs the build in unit tests.
 
 ### integrationTest
-Runs a series of integration tests with the Helix ALM REST API. This expects a Helix ALM database and projects similar to the
-REST API WITS setup.
+Runs a series of integration tests with the Helix ALM REST API. This expects a Helix ALM REST API and Helix ALM Server to be running, and the Helix ALM Server to have the sample projects loaded.
