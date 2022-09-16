@@ -25,10 +25,14 @@ plugins {
     id 'idea'
     id 'eclipse'
     id 'maven-publish'
+    id 'signing'
 }
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
 allprojects {
     apply plugin: "com.jfrog.artifactory"
+    archivesBaseName = rootProject.name
     group = "com.perforce.halm.rest"
     version = currentVersion
 }
@@ -98,6 +102,21 @@ java {
 compileJava {
     sourceCompatibility = '1.8'
     targetCompatibility = '1.8'
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+
+    def signingKey = findProperty("signingKey")
+    def signingPassword = findProperty("signingPassword")
+
+    useInMemoryPgpKeys(signingKey, signingPassword)
+
+    sign configurations.archives
 }
 
 publishing {
