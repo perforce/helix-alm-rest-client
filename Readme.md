@@ -33,11 +33,6 @@ We follow semantic versioning for Major - Minor - Patch:
 * Minor = Additive
 * Patch = Bugfix
 
-## Variables
-Set any required variables in `~/.gradle/gradle.properties`. Variables can also be specified via the command line:
-
-`./gradlew.bat build -PartifactoryUsername=username -PartifactoryPassword=password`
-
 ## Testing
 This project has two test modes:
 * ./gradlew.bat test
