@@ -30,20 +30,28 @@ plugins {
 
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
+ext.projectName = rootProject.name
+ext.projectGroup = "com.perforce.halm.rest"
+ext.projectDescription = "Helix ALM REST API Client"
+ext.projectVersion = currentVersion
+ext.projectURL = 'https://github.com/perforce/helix-alm-rest-client'
+ext.projectSCM = 'scm:git:git://github.com/perforce/helix-alm-rest-client.git'
+ext.projectLicense = 'https://github.com/perforce/helix-alm-rest-client/blob/main/LICENSE.txt'
+ext.developer = {
+    id = 'vincenpt'
+    name = 'Paul Vincent'
+    email = 'pvincent@perforce.com'
+}
+
 allprojects {
-    apply plugin: "com.jfrog.artifactory"
-    archivesBaseName = rootProject.name
-    group = "com.perforce.halm.rest"
-    version = currentVersion
+    archivesBaseName = projectName
+    group = projectGroup
+    version = projectVersion
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
-    //mavenCentral()
-    maven {
-        url "http://mvnartifactory.das.perforce.com:8081/artifactory/PerforceMavenCombined"
-        allowInsecureProtocol true
-    }
+    mavenCentral()
 }
 
 dependencies {
@@ -104,12 +112,24 @@ compileJava {
     targetCompatibility = '1.8'
 }
 
+javadocJar {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+sourcesJar {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
 artifacts {
     archives javadocJar, sourcesJar
 }
 
 signing {
-    required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+    // Only signing if we are publishing. This keeps us from needing everyday developers to keep the signing keys
+    // on their work desktops.
+    required { gradle.taskGraph.hasTask("publish") }
 
     def signingKey = findProperty("signingKey")
     def signingPassword = findProperty("signingPassword")
@@ -120,29 +140,57 @@ signing {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "ossrh"
+            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username = findProperty('ossrhUsername')
+                password = findProperty('ossrhPassword')
+            }
+        }
+
+        // Only try to publish to 'snapshots' if this IS a snapshot build.
+        if (!isReleaseVersion) {
+            maven {
+                name = "ossrhSnapshot"
+                url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+                credentials {
+                    username = findProperty('ossrhUsername')
+                    password = findProperty('ossrhPassword')
+                }
+            }
+        }
+    }
+
     publications {
         mavenJava(MavenPublication) {
             from components.java
-        }
-    }
-}
 
-artifactoryPublish {
-    dependsOn jar
-}
+            pom {
+                name = projectName
+                artifactId = projectName
+                packaging = 'jar'
+                description = projectDescription
+                url = projectURL
 
-artifactory {
-    contextUrl = "http://mvnartifactory.das.perforce.com:8081/artifactory"    //The base Artifactory URL if not overridden by the publisher/resolver
+                scm {
+                    connection = projectSCM
+                    developerConnection = projectSCM
+                    url = projectURL
+                }
 
-    publish {
-        repository {
-            repoKey = 'PerforceMavenCombined'
-            username = artifactoryUsername
-            password = artifactoryPassword
-            maven = true
-        }
-        defaults {
-            publications ('mavenJava')
+                licenses {
+                    license {
+                        name = 'MIT Licence'
+                        url = projectLicense
+                    }
+                }
+
+                developers {
+                    developer = developer
+                }
+            }
         }
     }
 }
