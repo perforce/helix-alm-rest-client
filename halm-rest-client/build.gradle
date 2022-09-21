@@ -8,14 +8,7 @@
 
 buildscript {
     repositories {
-        maven {
-            url 'http://mvnartifactory.das.perforce.com:8081/artifactory/PerforceMavenCombined'
-            allowInsecureProtocol true
-        }
-    }
-    dependencies {
-        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+        mavenCentral()
     }
 }
 
@@ -37,11 +30,9 @@ ext.projectVersion = currentVersion
 ext.projectURL = 'https://github.com/perforce/helix-alm-rest-client'
 ext.projectSCM = 'scm:git:git://github.com/perforce/helix-alm-rest-client.git'
 ext.projectLicense = 'https://github.com/perforce/helix-alm-rest-client/blob/main/LICENSE.txt'
-ext.developer = {
-    id = 'vincenpt'
-    name = 'Paul Vincent'
-    email = 'pvincent@perforce.com'
-}
+ext.developerID = 'vincenpt'
+ext.developerName = 'Paul Vincent'
+ext.developerEmail = 'pvincent@perforce.com'
 
 allprojects {
     archivesBaseName = projectName
@@ -137,24 +128,27 @@ signing {
     useInMemoryPgpKeys(signingKey, signingPassword)
 
     sign configurations.archives
+    sign publishing.publications
 }
 
 publishing {
     repositories {
-        maven {
-            name = "ossrh"
-            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            credentials {
-                username = findProperty('ossrhUsername')
-                password = findProperty('ossrhPassword')
+        if (isReleaseVersion) {
+            // Only try to publish to the release staging if this is a release build
+            maven {
+                name = "ossrh"
+                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    username = findProperty('ossrhUsername')
+                    password = findProperty('ossrhPassword')
+                }
             }
-        }
 
-        // Only try to publish to 'snapshots' if this IS a snapshot build.
-        if (!isReleaseVersion) {
+        } else {
+            // Only try to publish to 'snapshots' if this IS a snapshot build.
             maven {
                 name = "ossrhSnapshot"
-                url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+                url = "https://oss.sonatype.org/content/repositories/snapshots/"
                 credentials {
                     username = findProperty('ossrhUsername')
                     password = findProperty('ossrhPassword')
@@ -188,7 +182,11 @@ publishing {
                 }
 
                 developers {
-                    developer = developer
+                    developer {
+                        id = developerID
+                        name = developerName
+                        email = developerEmail
+                    }
                 }
             }
         }
