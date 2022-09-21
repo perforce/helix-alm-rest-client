@@ -6,12 +6,6 @@
  * User Manual available at https://docs.gradle.org/7.3.3/userguide/building_java_projects.html
  */
 
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-}
-
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
@@ -54,7 +48,7 @@ dependencies {
     api 'io.github.openfeign:feign-okhttp:11.8'
 
     // HTTP Client for the REST API helper
-    api 'com.squareup.okhttp3:okhttp:4.9.3'
+    api 'com.squareup.okhttp3:okhttp:4.10.0'
     api 'com.squareup.okhttp3:okhttp-tls:4.9.3'
 
     // Common utility functions
@@ -109,6 +103,8 @@ javadocJar {
 }
 
 sourcesJar {
+    exclude('.MySCMServerInfo')
+
     classifier = 'sources'
     from sourceSets.main.allSource
 }
