@@ -49,7 +49,7 @@ dependencies {
 
     // HTTP Client for the REST API helper
     api 'com.squareup.okhttp3:okhttp:4.10.0'
-    api 'com.squareup.okhttp3:okhttp-tls:4.9.3'
+    api 'com.squareup.okhttp3:okhttp-tls:4.10.0'
 
     // Common utility functions
     api 'commons-codec:commons-codec:1.15'
