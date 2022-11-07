@@ -45,7 +45,7 @@ dependencies {
 
     // REST API Helper
     api 'io.github.openfeign:feign-gson:11.8'
-    api 'io.github.openfeign:feign-okhttp:11.8'
+    api 'io.github.openfeign:feign-okhttp:12.0'
 
     // HTTP Client for the REST API helper
     api 'com.squareup.okhttp3:okhttp:4.10.0'
