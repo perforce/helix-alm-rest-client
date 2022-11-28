@@ -44,7 +44,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
 
     // REST API Helper
-    api 'io.github.openfeign:feign-gson:11.8'
+    api 'io.github.openfeign:feign-gson:12.1'
     api 'io.github.openfeign:feign-okhttp:11.8'
 
     // HTTP Client for the REST API helper
