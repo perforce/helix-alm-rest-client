@@ -83,7 +83,7 @@ class CertUtilsTest {
             Arguments.of("https://example.com/", CertificateStatus.VALID),
             Arguments.of("https://self-signed.badssl.com/", CertificateStatus.INVALID_DOWNLOADABLE),
             Arguments.of("https://expired.badssl.com/", CertificateStatus.INVALID_DOWNLOADABLE),
-            Arguments.of("https://revoked.badssl.com/", CertificateStatus.VALID),
+            Arguments.of("https://revoked.badssl.com/", CertificateStatus.INVALID_DOWNLOADABLE),
             Arguments.of("https://wrong.host.badssl.com/", CertificateStatus.INVALID_DOWNLOADABLE),
             Arguments.of("https://untrusted-root.badssl.com/", CertificateStatus.INVALID_DOWNLOADABLE),
             Arguments.of("https://pinning-test.badssl.com/", CertificateStatus.VALID)
