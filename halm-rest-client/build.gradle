@@ -53,7 +53,7 @@ dependencies {
 
     // Common utility functions
     api 'commons-codec:commons-codec:1.15'
-    api 'commons-io:commons-io:2.8.0'
+    api 'commons-io:commons-io:2.12.0'
 
 }
 
