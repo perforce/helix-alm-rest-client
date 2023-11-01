@@ -41,19 +41,19 @@ repositories {
 
 dependencies {
     // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 
     // REST API Helper
-    api 'io.github.openfeign:feign-gson:11.8'
-    api 'io.github.openfeign:feign-okhttp:11.8'
+    api 'io.github.openfeign:feign-gson:13.0'
+    api 'io.github.openfeign:feign-okhttp:13.0'
 
     // HTTP Client for the REST API helper
-    api 'com.squareup.okhttp3:okhttp:4.10.0'
-    api 'com.squareup.okhttp3:okhttp-tls:4.10.0'
+    api 'com.squareup.okhttp3:okhttp:4.12.0'
+    api 'com.squareup.okhttp3:okhttp-tls:4.12.0'
 
     // Common utility functions
-    api 'commons-codec:commons-codec:1.15'
-    api 'commons-io:commons-io:2.8.0'
+    api 'commons-codec:commons-codec:1.16.0'
+    api 'commons-io:commons-io:2.15.0'
 
 }
 
